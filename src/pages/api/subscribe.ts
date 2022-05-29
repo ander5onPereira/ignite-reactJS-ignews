@@ -1,8 +1,9 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { stripe } from './../../services/stripe';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { useSession } from 'next-auth/react';
 import { query as q } from 'faunadb';
 import { fauna } from '../../services/fauna';
+import { getSession } from 'next-auth/react';
 type User = {
   ref: {
     id: string;
@@ -11,9 +12,9 @@ type User = {
     stripe_customer_id: string;
   };
 };
-export const Subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { data: session } = useSession();
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
+    const session = await getSession({ req });
     const user = await fauna.query<User>(
       q.Get(q.Match(q.Index('users_by_email'), q.Casefold(session.user.email))),
     );

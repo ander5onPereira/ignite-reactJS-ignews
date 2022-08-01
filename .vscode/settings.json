@@ -38,7 +38,7 @@
     ".stylelintrc": "json",
     ".prettierrc": "json"
   },
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0,
   "emmet.syntaxProfiles": {
     "java": "jsx"
   },
@@ -78,7 +78,7 @@
     "tsconfig.json": "tune",
     "*.proto": "3d"
   },
-  "workbench.colorTheme": "Omni",
+  "workbench.colorTheme": "OM Theme (Default Dracula Italic)",
   "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
   "colorize.files_extensions": [".js", ".ts", ".tsx", ".css", ".scss", ".html"],
   "explorer.autoReveal": false,

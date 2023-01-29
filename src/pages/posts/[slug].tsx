@@ -38,6 +38,14 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const session = await getSession({ req });
   const { slug } = params;
+  if (!session?.activeSubcription) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
 
   const prismic = getPrismicClient(req);
   //TODO: "publication" na aula na verdade é "post" e o getByUID recebe o <any>

@@ -49,13 +49,12 @@ export const getStaticProps: GetStaticProps = async () => {
       pageSize: 100,
     },
   );
-  console.log({ response });
   const posts = response.results.map((post) => {
-    /* 
-      DICA de desempenho
-      -> Quando precisar realizar tratamento de dados realizar 
-         logo que obter o retorno da requisição
-    */
+    /*
+     * DICA de desempenho
+     * -> Quando precisar realizar tratamento de dados realizar
+     *   logo que obter o retorno da requisição
+     */
     return {
       slug: post.uid,
       title: RichText.asText(post.data.title),
@@ -72,10 +71,10 @@ export const getStaticProps: GetStaticProps = async () => {
       ),
     };
   });
-  /* 
-    mode de consolar json completo DICA:
-    -> console.log(JSON.stringify(response, null, 2)); 
-  */
+  /*
+   * mode de consolar json completo DICA:
+   * -> console.log(JSON.stringify(response, null, 2));
+   */
   return {
     props: {
       posts,
